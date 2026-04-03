@@ -1,16 +1,12 @@
-pipeline {
-    agent any
+node {
 
-    stages {
-
-        stage('Read File') {
-            steps {
-                script {
-                    def content = readFile 'kumar.txt'
-                    echo content
-                }
-            }
-        }
-
+    stage('Checkout Code') {
+        checkout scm
     }
+
+    stage('Read File') {
+        def content = readFile('kumar.txt')
+        echo content
+    }
+
 }
